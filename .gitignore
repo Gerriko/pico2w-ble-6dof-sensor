@@ -1,0 +1,15 @@
+# Build files
+build/
+*.elf
+*.uf2
+*.bin
+*.map
+*.hex
+
+# IDE-specific files (example for VS Code)
+.vscode/
+
+# Other common ignores
+*.o
+*.d
+

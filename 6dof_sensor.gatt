@@ -1,0 +1,56 @@
+// GATT Profile for Pico 2 W 6DOF Sensor Demo Application
+//
+// Defines the Bluetooth Low Energy services and characteristics
+// for exposing sensor data (temperature, orientation) and sample rate.
+// Includes additional descriptors (0x2901 and 0x2904) for orientation sensor service
+//
+// This .gatt file then gets automatically converted to 6dof_sensor.h by the compile process.
+// The 6dof_sensor.h file can be found build >> generated >> pico2w_ble_6dof_sensor_gatt_header folder
+
+PRIMARY_SERVICE, GAP_SERVICE
+CHARACTERISTIC, GAP_DEVICE_NAME, READ, "picow_sense"
+
+PRIMARY_SERVICE, GATT_SERVICE
+CHARACTERISTIC, GATT_DATABASE_HASH, READ,
+
+PRIMARY_SERVICE, ORG_BLUETOOTH_SERVICE_ENVIRONMENTAL_SENSING
+
+// Characteristic Temperature - read only, dynamic, with notifications/indications
+CHARACTERISTIC, ORG_BLUETOOTH_CHARACTERISTIC_TEMPERATURE, READ | NOTIFY | INDICATE | DYNAMIC
+
+// New custom service for orientation
+PRIMARY_SERVICE, 19B10010-E8F2-537E-4F6C-D104768A1214
+
+// Characteristic Sample Rate - read only, dynamic, write without response
+CHARACTERISTIC, 19B10012-E8F2-537E-4F6C-D104768A1214, READ | WRITE_WITHOUT_RESPONSE | DYNAMIC
+CHARACTERISTIC_USER_DESCRIPTION, READ | DYNAMIC
+// identifier: FORMAT-1, format: uint16_t, exponent:0, unit: frequency (hertz), name space: Bluetooth SIG, description: main , as defined in Assigned_Numbers.pdf
+CHARACTERISTIC_FORMAT, FORMAT-1, 06, 00, 2722, 01, 0106,
+
+// Characteristic Orientation Pitch - read only, dynamic, with notifications
+CHARACTERISTIC, 19B10013-E8F2-537E-4F6C-D104768A1214, READ | NOTIFY | DYNAMIC
+CHARACTERISTIC_USER_DESCRIPTION, READ | DYNAMIC
+// identifier: FORMAT-1, format: float32, exponent:0, unit: degree (plane angle), name space: Bluetooth SIG, description: main , as defined in Assigned_Numbers.pdf
+// IEEE 754 Single-Precision (often called "float32")
+CHARACTERISTIC_FORMAT, FORMAT-1, 14, 00, 2763, 01, 0106,
+
+// Characteristic Orientation Roll - read only, dynamic, with notifications
+CHARACTERISTIC, 19B10014-E8F2-537E-4F6C-D104768A1214, READ | NOTIFY | DYNAMIC
+CHARACTERISTIC_USER_DESCRIPTION, READ | DYNAMIC
+// identifier: FORMAT-1, format: float32, exponent:0, unit: degree (plane angle), name space: Bluetooth SIG, description: main , as defined in Assigned_Numbers.pdf
+// IEEE 754 Single-Precision (often called "float32")
+CHARACTERISTIC_FORMAT, FORMAT-1, 14, 00, 2763, 01, 0106,
+
+// Characteristic Heading Raw - read only, dynamic, with notifications
+CHARACTERISTIC, 19B10015-E8F2-537E-4F6C-D104768A1214, READ | NOTIFY | DYNAMIC
+CHARACTERISTIC_USER_DESCRIPTION, READ | DYNAMIC
+// identifier: FORMAT-1, format: float32, exponent:0, unit: degree (plane angle), name space: Bluetooth SIG, description: main , as defined in Assigned_Numbers.pdf
+// IEEE 754 Single-Precision (often called "float32")
+CHARACTERISTIC_FORMAT, FORMAT-1, 14, 00, 2763, 01, 0106,
+
+// Characteristic Heading Compensated - read only, dynamic, with notifications
+CHARACTERISTIC, 19B10016-E8F2-537E-4F6C-D104768A1214, READ | NOTIFY | DYNAMIC
+CHARACTERISTIC_USER_DESCRIPTION, READ | DYNAMIC
+// identifier: FORMAT-1, format: float32, exponent:0, unit: degree (plane angle), name space: Bluetooth SIG, description: main , as defined in Assigned_Numbers.pdf
+// IEEE 754 Single-Precision (often called "float32")
+CHARACTERISTIC_FORMAT, FORMAT-1, 14, 00, 2763, 01, 0106,
