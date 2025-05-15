@@ -118,6 +118,6 @@ Further modifications/tweaks by C Gerrish (Gerrikoio) (c) May 2025.
 ## Acknowledgements
 
 *   Raspberry Pi (Trading) Ltd. for the original `temp_sensor` example.
-*   Google Code Assist for assistance in generating parts of the LSM303 sensor integration.
+*   Google Code Assist for assistance in generating parts of the LSM303 sensor integration, formulating the orientation data, and in modifying the code for BLE event handling.
 
 ---
